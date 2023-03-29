@@ -18,7 +18,8 @@
                 "ms-azuretools.vscode-docker",
                 "hashicorp.terraform",
                 "wholroyd.jinja",
-                "adamhartford.vscode-base64"
+                "adamhartford.vscode-base64",
+                "github.vscode-github-actions"
             ]
         }
     }
