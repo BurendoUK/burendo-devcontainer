@@ -4,7 +4,9 @@
         "dockerfile": "Dockerfile"
     },
     "mounts": [
-        "source=${localEnv:HOME}/.aws,target=/home/vscode/.aws,type=bind,consistency=cached"
+        "source=${localEnv:HOME}/.aws,target=/home/vscode/.aws,type=bind,consistency=cached",
+        "source=${localEnv:HOME}/.zshrc,target=/home/vscode/.zshrc,type=bind,consistency=cached",
+        "source=${localEnv:HOME}/.oh-my-zsh/custom,target=/home/vscode/.oh-my-zsh/custom,type=bind,consistency=cached"
     ],
     "customizations": {
         "vscode": {

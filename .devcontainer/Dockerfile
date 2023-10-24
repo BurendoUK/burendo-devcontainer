@@ -48,6 +48,7 @@ RUN git clone https://github.com/zsh-users/zsh-autosuggestions /home/${USER}/.oh
 RUN git clone https://github.com/tfutils/tfenv.git /usr/local/tfenv && \
   ln -s /usr/local/tfenv/bin/* /usr/local/bin/ && \
   tfenv install 1.2.6 && \
+  tfenv install 1.6.1 && \
   tfenv use 1.2.6
 
 # Set the default shell to ZSH and source .zshrc
