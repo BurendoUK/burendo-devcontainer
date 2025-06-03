@@ -12,6 +12,7 @@ RUN apt-get update && apt-get install -y \
   && add-apt-repository ppa:deadsnakes/ppa \
   && apt-get update \
   && apt-get install -y python3.8 \
+  python3.12-venv \
   python3-pip \
   && apt-get clean && rm -rf /var/lib/apt/lists/*
 
@@ -22,11 +23,13 @@ RUN curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash - && \
 # Install AWS CLI and awsume
 RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-aarch64.zip" -o "awscliv2.zip" && \
   unzip awscliv2.zip && \
-  ./aws/install && \
-  pip3 install awsume \
-  boto3 \
-  Jinja2 \
-  PyYAML
+  ./aws/install
+
+# Install Python venv and install python packages
+RUN python3 -m venv /opt/venv && \
+   /opt/venv/bin/pip install --upgrade pip && \
+   /opt/venv/bin/pip install awsume boto3 Jinja2 PyYAML && \
+    echo 'export PATH="/opt/venv/bin:$PATH"' >> /etc/profile.d/venv.sh
 
 # Configure ZSH
 ENV USER=vscode
