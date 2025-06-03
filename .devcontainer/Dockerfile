@@ -16,7 +16,7 @@ RUN apt-get update && apt-get install -y \
   && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install nodejs
-RUN curl -fsSL https://deb.nodesource.com/setup_19.x | sudo -E bash - && \
+RUN curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash - && \
   sudo apt-get install -y nodejs build-essential gcc g++ make
 
 # Install AWS CLI and awsume
