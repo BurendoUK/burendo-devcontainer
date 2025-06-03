@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y \
   unzip \
   && add-apt-repository ppa:deadsnakes/ppa \
   && apt-get update \
-  && apt-get install -y python3.8 \
+  && apt-get install -y python3.12 \
   python3.12-venv \
   python3-pip \
   && apt-get clean && rm -rf /var/lib/apt/lists/*
