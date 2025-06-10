@@ -27,9 +27,14 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-aarch64.zip" -o "awscliv
 
 # Install Python venv and install python packages
 RUN python3 -m venv /opt/venv && \
-   /opt/venv/bin/pip install --upgrade pip && \
-   /opt/venv/bin/pip install awsume boto3 Jinja2 PyYAML && \
-    echo 'export PATH="/opt/venv/bin:$PATH"' >> /etc/profile.d/venv.sh
+  /opt/venv/bin/pip install --upgrade pip && \
+  /opt/venv/bin/pip install awsume boto3 Jinja2 PyYAML && \
+  echo 'export PATH="/opt/venv/bin:$PATH"' >> /etc/profile.d/venv.sh
+
+# Ensure custom alias file dir exists (important when bind mounts aren't yet present)
+RUN mkdir -p /home/vscode/.oh-my-zsh/custom && \
+  echo 'export PATH="/opt/venv/bin:$PATH"' >> /etc/zsh/zshrc && \
+  echo "alias awsume='awsume'" >> /home/vscode/.oh-my-zsh/custom/aliases.zsh
 
 # Configure ZSH
 ENV USER=vscode
